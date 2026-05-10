@@ -1,0 +1,84 @@
+-Steps to create object columns in tables
+Step1: Create Type
+CREATE OR REPLACE TYPE object_type_name AS OBJECT(
+attribute       DATATYPE(SIZE));
+/
+
+Step2: Use in Table Definition
+CREATE TABLE table_name(
+attribute     DATATYPE(SIZE),
+attribute     object_type_name
+);
+
+Create Object Types
+CREATE OR REPLACE TYPE address_type AS OBJECT(
+street           VARCHAR2(25),
+city             VARCHAR2(25),
+country          VARCHAR2(20));
+/
+SHOW ERRORS
+
+-Composite object types
+CREATE OR REPLACE TYPE company_type AS OBJECT(
+company_name               VARCHAR2(25),
+training_budget            NUMBER(10, 2),
+address                    address_type );
+/
+
+-Steps to Create Object Columns and Tables
+step1: Create Type
+CREATE OR REPLACE TYPE object_type_name AS OBJECT(
+attribute         DATATYPE(SIZE),
+attribute         DATATYPE(SIZE),
+attribute         DATATYPE(SIZE));
+/
+
+step2:Use as an object table definition
+CREATE TABLE object_table_name OF object_type_name;
+
+step3:Use in Relational Table Definition
+CREATE TABLE table_name(
+attribute    DATATYPE(SIZE),
+attribute    object_type_name,
+attribute    REF object_type_name
+                 SCOPE IS object_table_name);
+
+-Referencing Object Yables in Relational Tables
+CREATE TABLE instructors(
+instructor_id   NUMBER(6),
+address  REF address_type SCOPE IS addresses);
+
+
+-Using ALERT statement
+ALERT TABLE instructors
+ADD (address REF address_type SCOPE IS addresses);
+
+-Simple VARRAY
+-use a simple datatype in the definition
+CREATE TYPE varray_type_name AS
+VARRAY(SIZE) OF datatype;
+
+CREATE TYPE name_varray_type AS
+VARRAY(10) OF varchar(20);
+/
+
+Multidimensional VARRAY
+Step1:Create the type
+CREATE OR TYPE object_type_name AS OBJECT(
+attribute         DATATYPE(SIZE),
+attribute         DATATYPE(SIZE),
+attribute         DATATYPE(SIZE));
+/
+
+Step2:Use the type definition to create the varray
+CREATE TYPE varray_type_name AS
+VARRAY 
+
+Using VARRAYS
+CREATE TABLE sites (
+site_id NUMBER(6)
+
+
+
+
+
