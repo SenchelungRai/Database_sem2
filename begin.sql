@@ -24,11 +24,6 @@ FROM teachers
 WHERE INSTR(job_role, 'Lecturer') > 0;
 
 
-
--- 2. PL/SQL Block Structure
-
--- Use Case 1 — Calculate and print a player's level
-
 DECLARE
 vn_points    NUMBER := 82;
 v_level      VARCHAR2(2);
@@ -57,10 +52,6 @@ END;
 /
 
 
-
-
--- Use Case 2 — Fetch and display a teacher's salary
-
 DECLARE
 v_salary    teachers.salary_amount%TYPE;
 v_name      teachers.teacher_name%TYPE;
@@ -86,10 +77,6 @@ END;
 /
 
 
-
-
--- Use Case 3 — Apply a discount and update laptop price
-
 DECLARE
 vn_price      NUMBER := 800;
 vn_discount   NUMBER := 0.10;
@@ -111,12 +98,6 @@ END;
 /
 
 
-
-
--- 3. PL/SQL Loops with EXIT WHEN
-
--- Use Case 1 — Print multiplication table of 6
-
 DECLARE
 vn_counter NUMBER(2) := 1;
 
@@ -135,10 +116,6 @@ END LOOP;
 END;
 /
 
-
-
-
--- Use Case 2 — Accumulate total marks
 
 DECLARE
 vn_counter NUMBER(3) := 1;
@@ -161,10 +138,6 @@ DBMS_OUTPUT.PUT_LINE('Total Marks = ' || vn_total);
 END;
 /
 
-
-
-
--- Use Case 3 — Simulate ticket booking reduction
 
 DECLARE
 vn_tickets   NUMBER(4) := 15;
